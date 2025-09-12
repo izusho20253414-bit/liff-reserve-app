@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>予約フォーム</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h2>予約フォーム</h2>
+  <p>日付: <input type="date" id="date"></p>
+  <p>時間: <input type="time" id="time"></p>
+  <p>名前: <input type="text" id="name"></p>
+  <p>人数: <input type="number" id="people"></p>
+  <button onclick="reserve()">予約する</button>
+
+  <script>
+    async function reserve() {
+      // LIFF 初期化
+      await liff.init({ liffId: "＜あなたのLIFF ID＞" });
+      const profile = await liff.getProfile();
+
+      // 入力データを取得
+      const data = {
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        name: document.getElementById("name").value,
+        people: document.getElementById("people").value,
+        userId: profile.userId
+      };
+
+      // GASのWebアプリURLに送信
+      fetch("＜GASのWebアプリURL＞", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        alert("予約が完了しました！");
+        liff.closeWindow(); // LINEの画面を閉じる
+      });
+    }
+  </script>
+</body>
+</html>
