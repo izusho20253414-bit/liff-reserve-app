@@ -16,7 +16,7 @@
   <script>
     async function reserve() {
       // LIFF 初期化
-      await liff.init({ liffId: "＜あなたのLIFF ID＞" });
+      await liff.init({ liffId: "2008097113-pwKWvByv" });
       const profile = await liff.getProfile();
 
       // 入力データを取得
@@ -29,7 +29,7 @@
       };
 
       // GASのWebアプリURLに送信
-      fetch("＜GASのWebアプリURL＞", {
+      fetch("https://script.google.com/macros/s/AKfycbzAxsnkp22jb3S32HpDPXSDlVDIKFqpNfjGQc1LPH4RSXKOSZxhF2nt_TKbC5Ss3-Lj5A/exec", {
         method: "POST",
         body: JSON.stringify(data)
       })
