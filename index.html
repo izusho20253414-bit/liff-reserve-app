@@ -7,13 +7,15 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 <body>
-  <h2>予約フォーム</h2>
-  <p>日付: <input type="date" id="date"></p>
-  <p>時間: <input type="time" id="time"></p>
-  <p>名前: <input type="text" id="name"></p>
-  <p>人数: <input type="number" id="people"></p>
-  <button onclick="reserve()">予約する</button>
-
+  <form id="reserveForm">
+    <h2>予約フォーム</h2>
+    <label>日付: <input type="date" id="date" required></label>
+    <label>時間: <input type="time" id="time" required></label>
+    <label>名前: <input type="text" id="name" required></label>
+    <label>人数: <input type="number" id="people" min="1" required></label>
+    <button type="submit">予約する</button>
+  </form>
+  
   <script>
     async function reserve() {
       // LIFF 初期化
