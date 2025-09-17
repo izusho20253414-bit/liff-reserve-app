@@ -10,9 +10,13 @@ body {
 }
 
 form {
-  width: 100%;      /* 画面幅いっぱい */
-  max-width: none;  /* 上限を外す */
-  border-radius: 0; /* カード感をなくしてフルスクリーンに */
+  background: white;
+  padding: 40px;               /* 内側余白を大きく */
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  width: 95%;                  /* スマホの画面幅に近づける */
+  max-width: 520px;            /* 最大幅を広げる */
+  margin: 30px auto;           /* 上下に余白＋中央寄せ */
 }
 
 h2 {
