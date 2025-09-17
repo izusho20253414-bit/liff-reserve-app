@@ -35,6 +35,9 @@
       try {
         const res = await fetch("https://script.google.com/macros/s/AKfycbzAxsnkp22jb3S32HpDPXSDlVDIKFqpNfjGQc1LPH4RSXKOSZxhF2nt_TKbC5Ss3-Lj5A/exec", {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json"  // ← ここを追加！
+          },
           body: JSON.stringify(data)
         });
         const text = await res.text();
@@ -50,3 +53,4 @@
 </script>
 </body>
 </html>
+
