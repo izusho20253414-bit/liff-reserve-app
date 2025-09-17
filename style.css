@@ -9,14 +9,25 @@ body {
   padding: 10px;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f5f5f5;
+  min-height: 100vh;
+  margin: 0;
+  padding: 15px;   /* スマホの左右に少し余白 */
+}
+
 form {
   background: white;
-  padding: 40px;               /* 内側余白を大きく */
+  padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-  width: 95%;                  /* スマホの画面幅に近づける */
-  max-width: 520px;            /* 最大幅を広げる */
-  margin: 30px auto;           /* 上下に余白＋中央寄せ */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  width: 100%;        /* 横幅いっぱい */
+  max-width: 100%;    /* 制限を外す */
+  margin: 0 auto;     /* 中央寄せ */
+  box-sizing: border-box; /* パディング込みで幅を計算 */
 }
 
 h2 {
