@@ -8,13 +8,14 @@ body {
   margin: 0;
 }
 
-form {
+body form {
   background: white;
   padding: 35px;              /* 内側の余白を広くする */
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  width: 100%;
-  max-width: 520px;           /* ← ここを大きくすると横幅が広がる */
+  width: 95% !important;      /* スマホで画面幅に近づける */
+  max-width: 520px !important; /* 横幅の上限 */
+  margin: 20px auto;          /* 中央寄せ */
 }
 
 h2 {
