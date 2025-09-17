@@ -9,14 +9,10 @@ body {
 }
 
 form {
-  background: white;
-  padding: 40px;              /* 内側の余白を広くする */
-  border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  width: 100%;
-  max-width: 580px;           /* ← ここを大きくすると横幅が広がる */
+  width: 100%;      /* 画面幅いっぱい */
+  max-width: none;  /* 上限を外す */
+  border-radius: 0; /* カード感をなくしてフルスクリーンに */
 }
-
 
 h2 {
   text-align: center;
