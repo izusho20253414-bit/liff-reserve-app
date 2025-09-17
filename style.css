@@ -23,6 +23,8 @@ form {
   padding: 35px;
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  height: 80% !important;
+  max-height: 700px !important;
   width: 95% !important;       /* スマホ幅いっぱい */
   max-width: 520px !important; /* 横幅の上限 */
   margin: 0 auto;              /* 中央寄せ */
