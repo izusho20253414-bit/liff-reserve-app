@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>予約フォーム</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- スマホ対応 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <style>
     body {
@@ -20,36 +20,20 @@
       border-radius: 16px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.2);
       width: 100%;
-      max-width: 600px; /* ← 横幅を大きめに */
+      max-width: 600px;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: bold;
-    }
+    h2 { text-align: center; margin-bottom: 20px; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
     input, button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 15px;
-      font-size: 16px;
-      box-sizing: border-box;
+      width: 100%; padding: 10px; border-radius: 8px;
+      border: 1px solid #ccc; margin-bottom: 15px;
+      font-size: 16px; box-sizing: border-box;
     }
     button {
-      background: #06c755;
-      color: white;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
+      background: #06c755; color: white; border: none;
+      font-size: 18px; cursor: pointer;
     }
-    button:hover {
-      background: #05a746;
-    }
+    button:hover { background: #05a746; }
   </style>
 </head>
 <body>
@@ -68,50 +52,45 @@
   
   <script>
     async function main() {
-      // ★ あなたの LIFF ID に書き換えてください
-      await liff.init({ liffId: "2008097113-1DdO86M8" });  
-      const profile = await liff.getProfile();
+      try {
+        // ★ 自分の LIFF ID に置き換え
+        await liff.init({ liffId: "2008097113-1DdO86M8" });
+        const profile = await liff.getProfile();
 
-      document.getElementById("reserveForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
+        document.getElementById("reserveForm").addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-        const data = {
-          date: document.getElementById("date").value,
-          time: document.getElementById("time").value,
-          name: document.getElementById("name").value,
-          people: document.getElementById("people").value,
-          userId: profile.userId
-        };
+          const data = {
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value,
+            name: document.getElementById("name").value,
+            people: document.getElementById("people").value,
+            userId: profile.userId
+          };
 
-        try {
-          // ★ あなたの GAS WebアプリURL に書き換えてください
-          const res = await fetch("https://script.google.com/macros/s/AKfycbw1a6XpbCTrhbKW37RYaQBD6LFj6kXaiTMAmhwT8FMfqSVcKdX30vODcA1kwoCsvyTvCQ/exec", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
+          // 送信前に確認
+          alert("送信データ: " + JSON.stringify(data));
 
-          const text = await res.text();
-          alert("予約が完了しました！\n" + text);
-          liff.closeWindow();
-        } catch (err) {
-          alert("予約送信中にエラーが発生しました: " + err);
-          alert(JSON.stringify(data));
-        }
-      });
+          try {
+            // ★ 最新の GAS WebアプリURLに置き換え（必ず /exec）
+            const res = await fetch("https://script.google.com/macros/s/AKfycbxnHITnn0stDE_fcdBGrLpJiM4BZ6ckCsm8-6S6JR0bqiRHD7CqJEj3U5WPiwG8o814hA/exec", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+            });
+
+            const text = await res.text();
+            alert("サーバー応答: " + text);
+            liff.closeWindow();
+          } catch (err) {
+            alert("予約送信中にエラーが発生しました: " + err);
+          }
+        });
+      } catch (err) {
+        alert("LIFF 初期化エラー: " + err);
+      }
     }
-
     main();
-    const res = await fetch("https://script.google.com/macros/s/xxxxx/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-    const text = await res.text();
-    alert("サーバー応答: " + text);
-
   </script>
 </body>
 </html>
